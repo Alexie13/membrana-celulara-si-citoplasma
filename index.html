@@ -47,7 +47,7 @@
             background-color: var(--dark-color);
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             padding: 0 20px;
             position: fixed;
             top: 0;
@@ -55,25 +55,6 @@
             right: 0;
             z-index: 10;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-        }
-
-        .menu-toggle {
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            z-index: 20;
-        }
-
-        .menu-toggle span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background-color: var(--primary-color);
-            border-radius: 3px;
-            transition: all 0.3s ease;
         }
 
         .logo {
@@ -89,122 +70,10 @@
             letter-spacing: 1px;
         }
 
-        .logo img {
+        .logo svg {
             width: 40px;
             height: 40px;
             margin-right: 10px;
-        }
-
-        /* Sidebar Styles */
-        .sidebar {
-            width: var(--sidebar-width);
-            height: 100vh;
-            background-color: var(--dark-color);
-            position: fixed;
-            top: 0;
-            left: -300px;
-            transition: left 0.4s ease;
-            z-index: 15;
-            padding-top: var(--header-height);
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
-            overflow-y: auto;
-        }
-
-        .sidebar.active {
-            left: 0;
-        }
-
-        .sidebar-menu {
-            padding: 20px 0;
-        }
-
-        .sidebar-menu ul {
-            list-style: none;
-        }
-
-        .sidebar-menu ul li {
-            margin-bottom: 10px;
-        }
-
-        .sidebar-menu ul li a {
-            display: block;
-            padding: 12px 20px;
-            color: var(--text-color);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border-left: 4px solid transparent;
-        }
-
-        .sidebar-menu ul li a:hover {
-            background-color: rgba(0, 230, 192, 0.1);
-            border-left: 4px solid var(--primary-color);
-            color: var(--primary-color);
-        }
-        
-        /* Stiluri pentru submeniu */
-        .submenu {
-            display: none;
-            padding-left: 15px;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        
-        .submenu li {
-            margin-bottom: 0 !important;
-        }
-        
-        .submenu li a {
-            padding: 8px 15px !important;
-            font-size: 0.9em;
-            opacity: 0.9;
-        }
-        
-        .has-submenu.active .submenu {
-            display: block;
-        }
-        
-        .has-submenu .menu-toggle::after {
-            content: '▼';
-            font-size: 0.7em;
-            margin-left: 5px;
-            transition: transform 0.3s ease;
-        }
-        
-        .has-submenu.active .menu-toggle::after {
-            transform: rotate(180deg);
-        }
-        
-        /* Stiluri pentru sub-submeniu */
-        .sub-submenu {
-            display: none;
-            padding-left: 15px;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        
-        .sub-submenu li {
-            margin-bottom: 0 !important;
-        }
-        
-        .sub-submenu li a {
-            padding: 6px 10px !important;
-            font-size: 0.85em;
-            opacity: 0.85;
-        }
-        
-        .has-sub-submenu.active .sub-submenu {
-            display: block;
-        }
-        
-        .has-sub-submenu .sub-menu-toggle::after {
-            content: '▼';
-            font-size: 0.7em;
-            margin-left: 5px;
-            transition: transform 0.3s ease;
-        }
-        
-        .has-sub-submenu.active .sub-menu-toggle::after {
-            transform: rotate(180deg);
         }
 
         /* Main Content Styles */
@@ -266,11 +135,6 @@
             text-align: justify;
         }
 
-        .right-align {
-            padding-left: 25px;
-            display: block;
-        }
-
         .titlu-2 {
             padding-left: 10px;
             font-size: 1.6rem;
@@ -329,8 +193,8 @@
 
         .image-placeholder {
             width: 100%;
-            max-width: 600px;
-            height: 400px;
+            max-width: 100%;
+            height: 100%;
             background-color: rgba(0, 230, 192, 0.1);
             border: 1px dashed var(--primary-color);
             display: flex;
@@ -380,25 +244,6 @@
             width: 24px;
             height: 24px;
             fill: var(--dark-color);
-        }
-
-        /* Overlay */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 14;
-        }
-
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
         }
 
         /* Brain Decoration */
@@ -453,10 +298,6 @@
                 font-size: 1.4rem;
                 padding-left: 5px;
             }
-            
-            .right-align {
-                padding-left: 15px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -477,10 +318,6 @@
                 margin-top: 20px;
             }
             
-            .right-align {
-                padding-left: 10px;
-            }
-            
             .title-container {
                 padding: 8px 15px;
             }
@@ -489,6 +326,64 @@
                 font-size: 1.2rem;
             }
         }
+
+        /* Header pentru versiunea mobilă */
+        @media (max-width: 360px) {
+            header {
+                height: 50px;
+                padding: 0 10px;
+            }
+            
+            .logo h1 {
+                font-size: 0.9rem;
+                padding-left: 35px;
+                white-space: nowrap;
+            }
+            
+            .logo svg {
+                width: 25px;
+                height: 25px;
+            }
+            
+            .home-button {
+                width: 26px;
+                height: 26px;
+                padding: 5px;
+            }
+            
+            .home-button i {
+                font-size: 0.7rem;
+            }
+            
+            .main-content {
+                margin-top: 60px;
+                padding: 8px;
+            }
+            
+            .content-section {
+                padding: 12px;
+            }
+            
+            .page-title {
+                font-size: 1.4rem;
+            }
+            
+            .section-title {
+                font-size: 1.2rem;
+            }
+            
+            p, li {
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Stiluri specifice acestei pagini */
+        .list-style {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            text-align: justify;
+            padding-left: 30px;
+        }
     </style>
 </head>
 <body>
@@ -496,7 +391,7 @@
     
     <!-- Header -->
     <header>
-        <div style="width: 30px;"></div> <!-- Spațiu gol pentru echilibru -->
+        <div style="width: 30px;"></div>
         <div class="logo">
             <svg width="40" height="40" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="#00e6c0" stroke-width="2" />
@@ -508,11 +403,9 @@
             </svg>
             <h1>BIOGENIUS ACADEMY</h1>
         </div>
-        <div style="width: 30px;"></div> <!-- Spațiu gol pentru echilibru -->
+        <div style="width: 30px;"></div>
     </header>
 
-    
-    
     <!-- Back Button -->
     <a href="https://alexie13.github.io/citologie/#sectiunea_dorita" class="home-button">
         <svg class="home-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -525,82 +418,285 @@
         <div class="main-content">
             <h1 class="page-title">Membrana celulară și citoplasma</h1>
             
+            <!-- Secțiunea Introducere -->
             <div class="content-section">
-                <h2 class="subtitlu">Introducere:</h2>
-                <p>
-                    <span class="right-align"><b>Membrana</span> celulară</b>, cunoscută și sub
-                    denumirea de membrană plasmatică, este o structură complexă și
-                    delicată, formată din două straturi de fosfolipide, aranjate într-un
-                    mod specific denumit „bicelular lipidic". Aceste lipide au capete
-                    hidrofile (care iubesc apa) orientate spre exterior și cozi hidrofobe
-                    (care resping apa) îndreptate spre interior. Între aceste straturi se
-                    găsesc proteine integrale și periferice, care îndeplinesc roluri
-                    esențiale, precum transportul activ și pasiv al moleculelor,
-                    semnalizarea celulară și recunoașterea intercelulară. Acest aranjament
-                    oferă membranei nu doar o barieră fizică, ci și capacitatea de a
-                    controla cu precizie ce substanțe pot intra sau ieși din celulă,
-                    precum nutrienți, ioni, și produse reziduale.
-                </p>
-                <p>
-                    <span class="right-align"><b>Citoplasma</span></b> unei celule eucariote este un mediu foarte organizat.
-                    Aceasta include:
-                </p>
-                <p><span class="right-align">• Citosolul</span> – un lichid vâscos, gelatinos, alcătuit în principal din apă, în care sunt dizolvate ioni precum potasiu și sodiu, proteine, și macromolecule necesare pentru funcționarea celulară.</p>
-                <p><span class="right-align">• Organite</span> specializate – cum ar fi mitocondriile, care produc energie, reticulul endoplasmatic, care sintetizează proteinele și lipidele, și complexul Golgi, responsabil de procesarea și transportul substanțelor.</p>
-                <p><span class="right-align">• Citoscheletul</span> – o rețea complexă de fibre proteice (microfilamente, microtubuli și filamente intermediare) care oferă sprijin structural, determină forma celulei și facilitează mișcarea organitelor și moleculelor în interiorul acesteia.</p>
+                <h2 class="subtitlu">Introducere</h2>
+                <p>Membrana celulară, cunoscută și sub denumirea de membrană plasmatică, este o structură complexă și delicată, formată din două straturi de fosfolipide, aranjate într-un mod specific denumit „bicelular lipidic". Aceste lipide au capete hidrofile (care iubesc apa) orientate spre exterior și cozi hidrofobe (care resping apa) îndreptate spre interior. Între aceste straturi se găsesc proteine integrale și periferice, care îndeplinesc roluri esențiale, precum transportul activ și pasiv al moleculelor, semnalizarea celulară și recunoașterea intercelulară. Acest aranjament oferă membranei nu doar o barieră fizică, ci și capacitatea de a controla cu precizie ce substanțe pot intra sau ieși din celulă, precum nutrienți, ioni, și produse reziduale.</p>
                 
-                <div class="titlu-2"><b>Membrana Celulară:</b></div>
-                <p><span class="right-align"><b>Membrana</span> celulară</b>, prezentă atât la celulele procariote, cât și la cele eucariote, este un strat dublu de lipide care delimitează interiorul celulei de mediul extern. Această structură este formată în principal din fosfolipide, un tip de lipide specializate.</p>
-                <p><span class="right-align">Un</span> fosfolipid are o structură distinctă, compusă dintr-un cap fosfat, care este hidrofilic (atrage apa), și două cozi formate din acizi grași, care sunt hidrofobe (resping apa). Fosfolipidele se organizează spontan într-o structură bilamelară, în care cozile hidrofobe sunt orientate spre interior, departe de apă, iar capetele hidrofile sunt îndreptate spre exterior, spre mediile apoase. Această organizare, cunoscută sub denumirea de bistrat fosfolipidic, este stabilă din punct de vedere energetic și reprezintă baza structurii majorității membranelor biologice.</p>
+                <p>Citoplasma unei celule eucariote este un mediu foarte organizat. Aceasta include:</p>
+                <p class="list-style">• Citosolul – un lichid vâscos, gelatinos, alcătuit în principal din apă, în care sunt dizolvate ioni precum potasiu și sodiu, proteine, și macromolecule necesare pentru funcționarea celulară.</p>
+                <p class="list-style">• Organite specializate – cum ar fi mitocondriile, care produc energie, reticulul endoplasmatic, care sintetizează proteinele și lipidele, și complexul Golgi, responsabil de procesarea și transportul substanțelor.</p>
+                <p class="list-style">• Citoscheletul – o rețea complexă de fibre proteice (microfilamente, microtubuli și filamente intermediare) care oferă sprijin structural, determină forma celulei și facilitează mișcarea organitelor și moleculelor în interiorul acesteia.</p>
                 
-                <h2 class="subtitlu">Modelul mozaicului fluid:</h2>
-                <p><span class="right-align">Modelul mozaicului fluid, propus pentru prima dată în 1972, este standardul actual pentru explicarea structurii și comportamentului membranei plasmatice. Acest model oferă o descriere accesibilă și precisă pentru organizarea și dinamica membranelor din diferite tipuri de celule.</span></p>
-                <p><span class="right-align">Conform acestui model, membrana plasmatică este alcătuită dintr-un „mozaic" de componente — fosfolipide, colesterol și proteine — care se mișcă liber într-un mediu fluid. Această organizare flexibilă permite componentele să își schimbe poziția în mod continuu, proces reflectat doar parțial de reprezentările grafice statice ale membranei. De fapt, fosfolipidele și proteinele glisează constant unele pe lângă celelalte, adaptându-se la necesitățile celulei.</span></p>
-                <p><span class="right-align">Un aspect fascinant al fluidității membranei este capacitatea acesteia de a se adapta la intruziuni. Dacă un ac foarte subțire pătrunde în membrană, aceasta își face loc în jurul acului, iar după ce este îndepărtat, structura membranei revine la forma inițială, fără deteriorări permanente sau modificări semnificative. Această flexibilitate și reziliență sunt caracteristici esențiale pentru funcționarea eficientă a celulelor.</span></p>
-                <p><span class="right-align">Membrana plasmatică este compusă din trei componente principale: <b>lipide</b> (fosfolipide și colesterol), <b>proteine</b> și <b>grupări de carbohidrați</b> atașate unor lipide sau proteine.</span></p>
-                <p><span class="right-align"><b>Fosfolipidele</b> sunt molecule alcătuite din glicerol, două cozi de acizi grași și o grupare fosfat. Acestea formează structura de bază a membranei prin organizarea în două straturi, cu cozile hidrofobe orientate spre interior și capetele hidrofile spre exterior.</span></p>
+                <div class="titlu-2">Membrana Celulară</div>
+                <p>Membrana celulară, prezentă atât la celulele procariote, cât și la cele eucariote, este un strat dublu de lipide care delimitează interiorul celulei de mediul extern. Această structură este formată în principal din fosfolipide, un tip de lipide specializate.</p>
+                
+                <p>Un fosfolipid are o structură distinctă, compusă dintr-un cap fosfat, care este hidrofilic (atrage apa), și două cozi formate din acizi grași, care sunt hidrofobe (resping apa). Fosfolipidele se organizează spontan într-o structură bilamelară, în care cozile hidrofobe sunt orientate spre interior, departe de apă, iar capetele hidrofile sunt îndreptate spre exterior, spre mediile apoase. Această organizare, cunoscută sub denumirea de bistrat fosfolipidic, este stabilă din punct de vedere energetic și reprezintă baza structurii majorității membranelor biologice.</p>
+            </div>
+            
+            <!-- Secțiunea Modelul mozaicului fluid -->
+            <div class="content-section">
+                <h2 class="subtitlu">Modelul mozaicului fluid</h2>
+                <p>Modelul mozaicului fluid, propus pentru prima dată în 1972, este standardul actual pentru explicarea structurii și comportamentului membranei plasmatice. Acest model oferă o descriere accesibilă și precisă pentru organizarea și dinamica membranelor din diferite tipuri de celule.</p>
+                
+                <p>Conform acestui model, membrana plasmatică este alcătuită dintr-un „mozaic" de componente — fosfolipide, colesterol și proteine — care se mișcă liber într-un mediu fluid. Această organizare flexibilă permite componentele să își schimbe poziția în mod continuu, proces reflectat doar parțial de reprezentările grafice statice ale membranei. De fapt, fosfolipidele și proteinele glisează constant unele pe lângă celelalte, adaptându-se la necesitățile celulei.</p>
+                
+                <p>Un aspect fascinant al fluidității membranei este capacitatea acesteia de a se adapta la intruziuni. Dacă un ac foarte subțire pătrunde în membrană, aceasta își face loc în jurul acului, iar după ce este îndepărtat, structura membranei revine la forma inițială, fără deteriorări permanente sau modificări semnificative. Această flexibilitate și reziliență sunt caracteristici esențiale pentru funcționarea eficientă a celulelor.</p>
+                <h2 class="subtitlu">Componentele membranei celulare:</h2>
+                <p>Membrana plasmatică este compusă din trei componente principale: lipide (fosfolipide și colesterol), proteine și grupări de carbohidrați atașate unor lipide sau proteine.</p>
+                
+                <p>Fosfolipidele sunt molecule alcătuite din glicerol, două cozi de acizi grași și o grupare fosfat. Acestea formează structura de bază a membranei prin organizarea în două straturi, cu cozile hidrofobe orientate spre interior și capetele hidrofile spre exterior.</p>
                 
                 <div class="title-container">
                     <h2 class="title">Fosfolipide</h2>
                     <button class="toggle-btn">+</button>
                 </div>
-                <div class="content-box">
-                    <p><span class="right-align"><b>Fosfolipidele</b></span>, aranjate într-un <b>bistrat</b>, formează materialul de bază al membranei plasmatice. Acestea sunt adaptate acestui rol, deoarece sunt <b>amfipatice</b>, adică au atât regiuni hidrofile, cât și regiuni hidrofobe.</p>
+                <div class="content-box" style="display: none;">
+                    <p>Fosfolipidele, aranjate într-un bistrat, formează materialul de bază al membranei plasmatice. Acestea sunt adaptate acestui rol, deoarece sunt amfipatice, adică au atât regiuni hidrofile, cât și regiuni hidrofobe.</p>
                     
                     <div class="poza">
-                        <div class="image-placeholder">Imagine Fosfolipide</div>
+                        <div class="image-placeholder"><img src="fosfolipide.jpeg" width="100%" height="100%"></div>
                     </div>
                     
-                    <p><span class="right-align"><b>Porțiunea hidrofilă</b>, adică „iubitoare de apă", a fosfolipidelor este reprezentată de capul acestora, care conține o grupare fosfat încărcată negativ și o grupare mică, denumită „R" (a cărei identitate poate varia), ce poate fi polară sau cu sarcină electrică. Acești capi hidrofili sunt orientați către <b>exteriorul bistratului fosfolipidic</b>, în contact direct cu mediul apos din interiorul și exteriorul celulei. Datorită naturii polare a apei, aceasta formează interacțiuni electrostatice eficiente cu capetele hidrofile ale fosfolipidelor.</span></p>
+                    <p>Porțiunea hidrofilă, adică „iubitoare de apă", a fosfolipidelor este reprezentată de capul acestora, care conține o grupare fosfat încărcată negativ și o grupare mică, denumită „R" (a cărei identitate poate varia), ce poate fi polară sau cu sarcină electrică. Acești capi hidrofili sunt orientați către exteriorul bistratului fosfolipidic, în contact direct cu mediul apos din interiorul și exteriorul celulei. Datorită naturii polare a apei, aceasta formează interacțiuni electrostatice eficiente cu capetele hidrofile ale fosfolipidelor.</p>
                     
-                    <p><span class="right-align"><b>Partea hidrofobă</b>, sau „care evită apa", a fosfolipidelor este alcătuită din două cozi lungi de acizi grași nepolari. Aceste cozi interacționează bine cu moleculele nepolare, însă sunt incompatibile cu apa. Din acest motiv, fosfolipidele tind să își poziționeze cozile hidrofobe către <b>interiorul membranei</b>, departe de apă, creând o structură bilamelară stabilă din punct de vedere energetic. Această organizare formează o barieră eficientă între mediul intern și extern al celulei, împiedicând trecerea liberă a apei și a substanțelor polare sau cu sarcină electrică prin centrul hidrofob al membranei.</span></p>
+                    <p>Partea hidrofobă, sau „care evită apa", a fosfolipidelor este alcătuită din două cozi lungi de acizi grași nepolari. Aceste cozi interacționează bine cu moleculele nepolare, însă sunt incompatibile cu apa. Din acest motiv, fosfolipidele tind să își poziționeze cozile hidrofobe către interiorul membranei, departe de apă, creând o structură bilamelară stabilă din punct de vedere energetic. Această organizare formează o barieră eficientă între mediul intern și extern al celulei, împiedicând trecerea liberă a apei și a substanțelor polare sau cu sarcină electrică prin centrul hidrofob al membranei.</p>
                     
-                    <p><span class="right-align">Fosfolipidele, datorită naturii lor amfipatice, nu doar că sunt ideale pentru formarea bistratului lipidic al membranei celulare, ci realizează acest proces spontan atunci când condițiile sunt favorabile. În prezența apei sau a soluțiilor lichide, aceste molecule se aranjează astfel încât cozile lor hidrofobe să fie orientate una spre cealaltă, în timp ce capetele hidrofile sunt îndreptate spre exterior, în contact cu mediul apos.</span></p>
+                    <p>Fosfolipidele, datorită naturii lor amfipatice, nu doar că sunt ideale pentru formarea bistratului lipidic al membranei celulare, ci realizează acest proces spontan atunci când condițiile sunt favorabile. În prezența apei sau a soluțiilor lichide, aceste molecule se aranjează astfel încât cozile lor hidrofobe să fie orientate una spre cealaltă, în timp ce capetele hidrofile sunt îndreptate spre exterior, în contact cu mediul apos.</p>
                     
-                    <p><span class="right-align">Dacă fosfolipidele au cozi mai scurte, ele pot forma MICELE – structuri sferice simple, cu un singur strat lipidic. În schimb, fosfolipidele cu cozi mai lungi se organizează în LIPOZOMI, structuri sferice mai complexe, care conțin un interior gol și sunt delimitate de un dublu strat lipidic. Aceste proprietăți unice le permit fosfolipidelor să creeze bariere eficiente și dinamice, esențiale pentru funcționarea celulelor.</span></p>
+                    <p>Dacă fosfolipidele au cozi mai scurte, ele pot forma MICELE – structuri sferice simple, cu un singur strat lipidic. În schimb, fosfolipidele cu cozi mai lungi se organizează în LIPOZOMI, structuri sferice mai complexe, care conțin un interior gol și sunt delimitate de un dublu strat lipidic. Aceste proprietăți unice le permit fosfolipidelor să creeze bariere eficiente și dinamice, esențiale pentru funcționarea celulelor.</p>
                     
                     <div class="poza-2">
-                        <div class="image-placeholder">Imagine Lipozom</div>
+                        <div class="image-placeholder"><img src="lipozom.jpeg" width="100%" height="100%"></div>
                     </div>
                 </div>
+                
+                <div class="title-container">
+                    <h2 class="title">Colesterol</h2>
+                    <button class="toggle-btn">+</button>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <p>Colesterolul, o lipidă caracterizată de patru inele fuzionate, este intercalat între fosfolipide în interiorul membranei. Acesta contribuie la stabilitatea și fluiditatea membranei, prevenind îngroșarea sau rigidizarea excesivă.</p>
+                    
+                    <div class="poza">
+                        <div class="image-placeholder"><img src="colesterolul.png" width="100%" height="100%"></div>
+                    </div>
+                    
+                    <p>Structura cozilor de acizi grași din fosfolipide este importantă pentru determinarea proprietăților membranei și, în special, a fluidității sale. La temperaturi mai mici, cozile drepte ale acizilor grași saturați se pot compacta, formând o membrană densă și destul de rigidă.</p>
+                    
+                    <p>Pe lângă fosfolipide, animalele au o componentă membranară suplimentară care menține fluiditatea. Colesterolul, un alt tip de lipidă care este încorporat printre fosfolipidele membranei, ajută la minimizarea efectului temperaturii asupra fluidității.</p>
+                    
+                    <p>La temperaturi scăzute, colesterolul crește fluiditatea nepermițând fosfolipidelor să se compacteze, în timp ce la temperaturi ridicate, reduce fluiditatea. În acest fel, colesterolul mărește gama de temperaturi la care fluiditatea membranei este funcțională și sănătoasă.</p>
+                </div>
+                
+                <div class="title-container">
+                    <h2 class="title">Proteine</h2>
+                    <button class="toggle-btn">+</button>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <p>Proteinele din membrană au roluri diverse. Unele traversează întreaga membrană, facilitând transportul moleculelor sau semnalizarea celulară, în timp ce altele sunt atașate doar pe fața interioară sau exterioară, contribuind la funcții de suport sau recunoaștere.</p>
+                    
+                    <div class="poza">
+                        <div class="image-placeholder"><img src="proteina integrala.png
+                            " width="100%" height="100%"></div>
+                    </div>
+                    
+                    <p>Proteinele sunt a doua componentă majoră a membranelor plasmatice. Există două categorii importante de proteine membranare: integrale și periferice.</p>
+                    
+                    <h3 style="color: var(--primary-color); margin: 15px 0 10px 0;">Proteine integrale</h3>
+                    <p><b>• Localizare și structură:</b><br>
+                    - Aceste proteine se integrează direct în bistratul fosfolipidic al membranei. Multe proteine integrale traversează complet membrana, fiind numite proteine transmembranare. Regiunile lor hidrofobe interacționează strâns cu cozile lipidelor, ancorându-le ferm în structură.</p>
+                    
+                    <p><b>• Funcții:</b><br>
+                    - Transport: Aceste proteine pot forma canale sau transportori, facilitând trecerea selectivă a ionilor și moleculelor între mediul intern și cel extern al celulei.<br>
+                    - Recepție: Multe proteine integrale acționează ca receptori, detectând semnalele externe (de exemplu, hormoni sau neurotransmițători) și inițiind răspunsuri intracelulare.<br>
+                    - Enzimatic: Unele au funcții enzimatice, catalizând reacții la nivelul membranei.</p>
+                    
+                    <p><b>• Exemple:</b><br>
+                    - Receptorii de membrană, canalele ionice, pompele de transport (precum pompa de sodiu-potasiu), sunt toate proteine integrale.</p>
+                    
+                    <h3 style="color: var(--primary-color); margin: 15px 0 10px 0;">Proteine periferice</h3>
+                    <p><b>• Localizare și structură:</b><br>
+                    - În contrast cu proteinele integrale, proteinele periferice nu se află în interiorul bistratului fosfolipidic, ci sunt atașate slab la suprafața internă sau externă a membranei. Ele se leagă prin interacțiuni non-covalente, cum ar fi legăturile ionice sau cele de hidrogen, fie de proteinele integrale, fie de capetele hidrofile ale fosfolipidelor.</p>
+                    
+                    <p><b>• Funcții:</b><br>
+                    - Sprijin și structură: Ele joacă un rol important în ancorarea citoscheletală, ajutând la menținerea formei celulei și la organizarea internă a acesteia.<br>
+                    - Semnalizare: Participă la transmiterea semnalelor prin interacțiuni cu proteinele transmembranare sau alte molecule de semnalizare.<br>
+                    - Reglare: Uneori, contribuie la reglarea activității enzymatice sau la asamblarea complexelor proteice la suprafața celulei.</p>
+                    
+                    <p><b>• Exemple:</b><br>
+                    - Proteinele ce se leagă de partea internă a membranei, implicate în conexiunea cu citoscheletul (de exemplu, spectrina la celulele roșii) sau în transmiterea semnalelor, sunt tipice proteine periferice.</p>
+                    <div class="poza">
+                        <div class="image-placeholder"><img src="proteina transmembranara.png" width="100%" height="100%"></div>
+                    </div>               
+                </div>
+                
+                <div class="title-container">
+                    <h2 class="title">Glucide</h2>
+                    <button class="toggle-btn">+</button>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <p>Glucidele sunt prezente exclusiv pe partea externă a membranei și se leagă de proteine (formând glicoproteine) sau de lipide (formând glicolipide). Acestea joacă un rol esențial în recunoașterea intercelulară, aderență și protecția celulei.</p>
+                    
+                    <p>Glucidele reprezintă a treia componentă majoră a membranelor plasmatice. În mod obișnuit, acestea se găsesc la suprafața externă a celulelor și se leagă fie de proteine – formând glicoproteine – fie de lipide – formând glicolipide. Lanțurile de glucide pot fi alcătuite din 2 până la 60 de monozaharide și pot avea o structură liniară sau ramificată.</p>
+                    
+                    <p>Împreună cu proteinele membranare, glucidele formează markeri celulari, asemănători unor acte de identitate moleculară, care permit celulelor să se recunoască între ele. Acești markeri sunt esențiali pentru funcționarea sistemului imunitar, deoarece ajută celulele imune să facă diferența între celulele proprii, pe care trebuie să le protejeze, și cele străine, care pot reprezenta o amenințare și, prin urmare, trebuie atacate.</p>
+                </div>
+                <div class="poza">
+                    <div class="image-placeholder"><img src="glucide.png" width="100%" height="100%"></div>
+                </div>
+            </div>
+            
+            <!-- Secțiunea Transport membrane -->
+            <div class="content-section">
+                <h2 class="subtitlu">Transportul Transmembranar</h2>
+                <p>O membrană permeabilă permite trecerea tuturor moleculelor, în timp ce o membrană impermeabilă nu permite trecerea niciunei molecule. Pe de altă parte, o membrană semipermeabilă permite doar anumitor molecule să traverseze. Membrana plasmatică nu este complet permeabilă, deoarece unele molecule pot pătrunde în celule, iar altele nu. Din acest motiv, membrana plasmatică este considerată semipermeabilă. Moleculele mici pot traversa membrana plasmatică, în timp ce cele mari nu pot. Cu toate acestea, unele molecule mici trec rapid prin membrană, în timp ce altele întâmpină dificultăți sau nu reușesc să treacă deloc. Astfel, membrana plasmatică este adesea descrisă ca fiind diferențial permeabilă sau selectiv permeabilă.</p>
+                
+                <p>Structura membranei plasmatice influențează tipurile de molecule care pot trece liber prin ea. Moleculele mici, fără sarcină electrică, în special cele solubile în lipide, traversează membrana cu ușurință. Macromoleculele nu pot trece liber, iar ionii încărcați electric întâmpină dificultăți. Membrana este de obicei încărcată pozitiv la exterior și negativ la interior. Ionii cu sarcină negativă tind să se deplaseze prin canale din interiorul spre exteriorul celulei, în timp ce ionii cu sarcină pozitivă se deplasează în sens opus.</p>
+                
+                <p>Există atât mecanisme pasive, cât și active prin care moleculele pot traversa membrana plasmatică. Mecanismele active necesită energie sub formă de ATP (adenozin trifosfat), în timp ce cele pasive nu necesită aport energetic. Transportul pasiv include procesul de difuzie și transportul facilitat, în timp ce transportul activ implică mecanisme precum transportul activ propriu-zis, endocitoza și exocitoza.</p>
+                
+                <div class="title-container">
+                    <h2 class="title">Transportul pasiv: Osmoza și Difuziunea</h2>
+                    <button class="toggle-btn">+</button>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h3 style="color: var(--primary-color); margin: 10px 0;">Difuziune</h3>
+                    <p>Difuziunea este un proces fizic prin care orice moleculă se deplasează de la o zonă de concentrație mare la una de concentrație mică, urmând gradientul până când se distribuie uniform. De exemplu, atunci când adaugi câteva cristale de colorant în apă, moleculele de colorant și apă se mișcă aleatoriu, însă mișcarea netă se îndreaptă spre zona cu concentrație redusă, rezultând o soluție omogenă. O soluție este compusă dintr-un solut (de obicei, un solid) dizolvat într-un solvent (de regulă, un lichid).</p>
+                    
+                   
+                    <h3 style="color: var(--primary-color); margin: 10px 0;">Difuziunea prin Membrana Plasmatică</h3>
+                    <p>Datorită proprietăților chimice și fizice ale membranei plasmatice, numai anumite molecule pot traversa prin difuziune. Moleculele liposolubile, cum ar fi alcoolii, se pot deplasa ușor datorită compoziției lipidice predominante, iar gazele – cum ar fi oxigenul și dioxidul de carbon – difuzează eficient. Spre exemplu, oxigenul din alveolele pulmonare intră în sânge datorită diferenței de concentrație. În plus, s-a dezvoltat o metodă inovatoare de tratament, în care celulele ce produc o substanță specifică (de exemplu, dopamina pentru Parkinson) sunt încapsulate și implantate, permițând substanței să difuzeze treptat în organism.</p>
+                    
+                    <h3 style="color: var(--primary-color); margin: 10px 0;">Mișcarea Apei</h3>
+                    <p>Apa traversează celulele cu ușurință, probabil prin canale cu pori suficient de mari pentru a permite doar trecerea apei, prevenind astfel accesul altor molecule. Acest fenomen are implicații biologice majore.</p>
+                    <div class="poza">
+                        <div class="image-placeholder"><img src="membrana semipermeabila.png" width="100%" height="100%"></div>
+                    </div>
+                    <h3 style="color: var(--primary-color); margin: 10px 0;">Osmoză</h3>
+                    <p>Osmoza este difuziunea apei printr-o membrană diferențial permeabilă. Pentru a ilustra acest proces, se utilizează un tub de ciulin umplut cu o soluție de zahăr de 10% care, la un capăt, este acoperit de o membrană cu permeabilitate diferențiată. Tubul este apoi plasat într-un recipient care conține o soluție de zahăr de 5%.</p>
+                    
+                    <p>În recipient, concentrația de solut este mai scăzută (deci numărul de molecule de apă pe volum este mai mare), pe când în tubul de ciulin, concentrația de solut este mai ridicată (numărul de molecule de apă este mai mic). Prin urmare, apa se mișcă net din recipient spre interiorul tubului prin membrană. Deoarece solutul nu poate traversa membrana, nivelul soluției din tub crește.</p>
+                    
+                    <p>Odată ce apa intră în tub, se acumulează o presiune hidrostatică care, la egalitate cu presiunea osmotică a soluției din interiorul tubului, determină oprirea fluxului net de apă.</p>
+                    
+                    <div class="poza">
+                        <div class="image-placeholder"><img src="fluid extracelular.png" width="100%" height="100%"></div>
+                    </div>
+                    
+                    <h3 style="color: var(--primary-color); margin: 10px 0;">Tonicitate</h3>
+                    <p>Tonicitatea unei soluții extracelulare se referă la capacitatea acesteia de a influența deplasarea apei în interiorul sau exteriorul celulei prin osmoză. Spre deosebire de osmolaritate, tonicitatea ia în considerare nu doar concentrația soluților, ci și permeabilitatea membranei celulare pentru acești soluți.</p>
+                    
+                    <p>Există trei termeni principali pentru descrierea efectului unei soluții asupra celulelor:</p>
+                    <p>- <b>Soluție hipertonică</b>: Dacă celula este plasată într-o astfel de soluție, apa va ieși din celulă, determinând reducerea volumului acesteia. O soluție este considerată hipertonică față de celulă atunci când concentrația soluților din soluție este mai mare decât cea din interiorul celulei, iar soluțiii nu pot traversa membrana.</p>
+                    <p>- <b>Soluție hipotonică</b>: Dacă celula este plasată într-o soluție hipotonică, apa va pătrunde în celulă, conducând la creșterea volumului acesteia. O soluție este definită ca fiind hipotonică față de celulă atunci când concentrația soluților din soluție este mai mică decât cea din interiorul celulei și soluțiii nu pot traversa membrana.</p>
+                    <p>- <b>Soluție izotonică</b>: Într-o soluție izotonică, nu va exista nicio deplasare semnificativă a apei în sau din celulă, astfel că volumul acesteia va rămâne constant. O soluție este izotonică față de celulă atunci când concentrația soluților din soluție este egală cu cea din interiorul celulei și soluțiii nu pot traversa membrana.</p>
+                    <div class="poza">
+                        <div class="image-placeholder"><img src="solutie hipertonica.png" width="100%" height="100%"></div>
+                    </div>
+                    <p>În cazul celulei vegetale, o soluție extracelulară hipotonică reprezintă condiția optimă. Datorită faptului că membrana plasmatică se poate extinde doar până la peretele celular rigid, celula nu riscă să explodeze sau să se lizeze. Mai mult, citoplasma plantelor este ușor hipertonică în raport cu mediul din jur, astfel încât apa pătrunde în celulă până când presiunea internă, cunoscută drept presiune de turgescență, oprește suplimentul de influx.</p>
+                    
+                    <p>Menținerea echilibrului hidric și al concentrațiilor soluțiilor este esențială pentru sănătatea plantei. Dacă o plantă nu este udată corespunzător, mediul extracelular poate deveni izotonic sau chiar hipertonic, provocând evacuarea apei din celulele sale. Această scădere a turgescenței se manifestă prin ofilire, iar în condiții hipertonice exacerbate, membrana celulară se poate detașa de peretele celular, iar citoplasma se poate strânge, fenomen cunoscut sub denumirea de plasmoliză.</p>
+                   
+                    <h3 style="color: var(--primary-color); margin: 10px 0;">Difuziunea facilitată</h3>
+                    <p>Difuziunea facilitată reprezintă un mecanism de transport pasiv prin membrana celulară, prin care moleculele se deplasează din zonele cu concentrație mai mare spre cele cu concentrație mai mică, fără a consuma energie suplimentară. Procesul se oprește odată ce concentrațiile se echilibrează pe ambele părți ale membranei.</p>
+                    
+                    <p>Molecule precum dioxidul de carbon și oxigenul pot traversa direct membrana, însă moleculele polare sau încărcate nu pot face asta singure. Pentru a-i ajuta, celulele folosesc proteine speciale din membrană, precum canale și transportatori.</p>
+                    
+                    <p>- <b>Canalele</b> creează pori hidrofilici în membrană, permițând trecerea selectivă a unor molecule—de exemplu, aquaporinele ajută apa să pătrundă rapid în celulă. Unele canale sunt permanent deschise, iar altele se activează ca răspuns la semnale specifice, cum ar fi schimbările de tensiune electrică.</p>
+                    
+                    <p>- <b>Transportatorii</b> își schimbă forma atunci când se leagă molecula țintă, mutând-o de pe o parte pe cealaltă a membranei. Ei facilitează mișcarea de-a lungul gradientului de concentrație, însă, în general, funcționează mai lent decât canalele.</p>
+                    
+                    <p>În esență, difuziunea facilitată permite celulelor să transfere eficient substanțe esențiale, menținând echilibrul intern și asigurând funcționarea corectă a organismului.</p>
+                    
+                    <div class="poza">
+                        <div class="image-placeholder"><img src="proteina canal.png" width="100%" height="100%"></div>
+                    </div>
+                    <h3 style="color: var(--primary-color); margin: 10px 0;">VS</h3>
+                    <div class="poza">
+                        <div class="image-placeholder"><img src="proteina trasnportoare.png" width="100%" height="100%"></div>
+                    </div>
+                </div>
+                
+                <div class="title-container">
+                    <h2 class="title">Transportul activ</h2>
+                    <button class="toggle-btn">+</button>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <p>Transportul activ este un proces esențial prin care celulele mută molecule sau ioni de la o zonă cu concentrație mică la alta cu concentrație mai mare, contrar direcției naturale a difuziei. Spre deosebire de transportul pasiv (cum ar fi difuziunea facilitată), transportul activ necesită energie, de obicei sub formă de ATP, pentru a funcționa.</p>
+                    
+                    
+                    
+                    <p>Celulele folosesc proteine speciale numite pompe pentru a efectua transportul activ. Aceste proteine își schimbă forma astfel încât să poată lega o moleculă sau ion într-o regiune cu concentrație scăzută, să o transporte prin membrană și apoi să o degaje într-o regiune cu concentrație ridicată. Un exemplu clasic este pompa de sodiu-potasiu, care menține un echilibru vital de ioni în celulele animale și este esențială pentru transmiterea impulsurilor nervoase și reglarea volumului celular.</p>
+                    
+                    <p>Există două forme principale de transport activ:</p>
+                    
+                    <p><b>• Transport activ primar:</b> Energia ATP este folosită direct pentru a pompa moleculele sau ionii împotriva gradientului de concentrație.</p>
+                    <div class="poza">
+                        <div class="image-placeholder"><img src="ciclul pompei.png" width="100%" height="100%"></div>
+                    </div>
+                    <p><b>• Transport activ secundar:</b> Energia necesară transportului nu provine direct din ATP, ci este derivată dintr-un gradient de concentrație creat anterior de un transport activ primar, folosindu-se ulterior pentru a transporta alte substanțe.</p>
+                    <div class="poza">
+                        <div class="image-placeholder"><img src="concentratie.png" width="100%" height="100%"></div>
+                    </div>
+                    <p>Deși transportul activ este mai lent decât canalele pasive, el permite celulelor să acumuleze nutrienți sau să elimine deșeuri chiar și atunci când nu există un gradient favorabil. Acest mecanism este vital pentru menținerea homeostaziei și a funcționării optime a celulelor în medii variate.</p>
+                </div>
+                
+                <div class="title-container">
+                    <h2 class="title">Citoză</h2>
+                    <button class="toggle-btn">+</button>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <p>Transportul transmembranar prin citoză reprezintă un proces activ prin care celulele transferă substanțe mari sau particule folosind vezicule, evitând astfel dificilățile de a traversa direct membrana celulară.</p>
+                    
+                    <h3 style="color: var(--primary-color); margin: 10px 0;">Endocitoză</h3>
+                    <p>Tonicitatea unei soluții extracelulare se referă la capacitatea acesteia de a influența deplasarea apei în interiorul sau exteriorul celulei prin osmoză. Spre deosebire de osmolaritate, tonicitatea ia în considerare nu doar concentrația soluților, ci și permeabilitatea membranei celulare pentru acești soluți.</p>
+                    
+                    <p><b>Fagocitoza:</b> Fagocitoza (literalmente „hrănirea cu celule") este o formă de endocitoză în care particule mari, cum ar fi celulele sau resturile celulare, sunt transportate în celulă. Am văzut deja un exemplu de fagocitoză, deoarece acesta este tipul de endocitoză utilizat de macrofage, de la începutul articolului, pentru a devora un agent patogen.</p>
+                    <div class="poza">
+                        <div class="image-placeholder"><img src="fagocitoza.png" width="100%" height="100%"></div>
+                    </div>
+                    <p><b>Pinocitoza:</b> Pinocitoză (literalmente „băutul de celule") este o formă de endocitoză în care o celulă preia cantități mici de lichid extracelular. Pinocitoza apare în multe tipuri de celule și are loc continuu, celula prelevând și reprelevând mostre din lichidului înconjurător pentru a obține orice nutrienții și molecule se întâmplă să fie prezente. Materialul pinocitat este ținut în vezicule mici, cu mult mai mici decât vacuola digestivă mare produsă de fagocitoză.</p>
+                    <div class="poza">
+                        <div class="image-placeholder"><img src="pinocitoza.png" width="100%" height="100%"></div>
+                    </div>
+                    <h3 style="color: var(--primary-color); margin: 10px 0;">Exocitoză</h3>
+                    <p>Pe de altă parte, atunci când celula dorește să elibereze substanțe în mediul extracelular, ea formează vezicule care transportă aceste materiale către membrană. Urmează apoi fuziunea veziculei cu membrana celulară, eliberând conținutul în exterior. Acest proces este numit exocitoză.</p>
+                    
+                    <p>Unele dintre aceste vezicule provin din aparatul Golgi și conțin proteine produse în mod specific de celulă pentru a fi eliberate în afară, cum ar fi moleculele de semnalizare. Alte vezicule conțin deșeuri pe care celula trebuie să le elimine, cum ar fi resturile care rămân după fagocitarea unei particule care a fost digerată.</p>
+                    
+                    <div class="poza">
+                        <div class="image-placeholder"><img src="exocitoza.png" width="100%" height="100%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Secțiunea Citoplasma -->
+            <div class="content-section">
+                <h2 class="subtitlu">Citoplasma</h2>
+                <p>Citoplasma este tot materialul care se găsește în interiorul celulei, între membrana plasmatică și nucleu, și joacă un rol esențial în funcționarea acesteia. Ea constă din trei componente principale:</p>
+                
+                <h3 style="color: var(--primary-color); margin: 15px 0 10px 0;">1. Citosolul</h3>
+                <p>Citosolul este o soluție gelatinoasă, bogată în apă (aproximativ 70–80%), în care sunt dizolvate diverse molecule, ioni, proteine și enzime. Această substanță fluidă este mediul în care au loc majoritatea reacțiilor biochimice, inclusiv metabolismul, sinteza proteinelor și transmiterea semnalelor celulare. Datorită compoziției sale dinamice, citosolul permite celulei să răspundă rapid la schimbările din mediu prin ajustarea proceselor metabolice.</p>
+                
+                <h3 style="color: var(--primary-color); margin: 15px 0 10px 0;">2. Organitele celulare</h3>
+                <p>Înglobate în citosol se află organitele, care sunt structuri specializate cu funcții specifice. Aceste structuri, separate de membrane, permit compartimentarea funcțiilor celulare pentru o eficiență crescută și reglarea precisă a reacțiilor interne.</p>
+                
+                <h3 style="color: var(--primary-color); margin: 15px 0 10px 0;">3. Citoscheletul și inclusiunile</h3>
+                <p>Citoplasma conține, de asemenea, un sistem de filamente proteice, numit citoschelet, alcătuit din microfilamente (actină), microtubule și filamente intermediare. Acest sistem oferă formei celulare rezistență, sprijin și dinamică, permițând mișcarea organitelor, diviziunea celulară și răspunsul la stimuli mecanici.</p>
+                
+                <p>În plus, în citoplasmă se mai găsesc și inclusiuni, care sunt depozite de substanțe (de exemplu, granule de glicogen, lipide sau pigmenți), dar care nu sunt înconjurate de membrană. Aceste depozite servesc ca rezerve de energie sau materiale, esențiale în condiții variate de mediu.</p>
+                
+                <p>Pe scurt, citoplasma nu este doar un "lichid" în care plutesc organitele, ci un mediu dinamic, complex și organizat care asigură procesele vitale ale celulei, de la sinteza moleculelor până la transportul intern și structurarea formei celulare. Această bogăție funcțională și organizare precisă contribuie la capacitatea celulei de a se adapta și de a răspunde la provocările mediului înconjurător.</p>
+                <div class="poza">
+                    <div class="image-placeholder"><img src="citoplasma.png" width="100%" height="100%"></div>
+                </div>
+               
             </div>
         </div>
     </div>
 
     <script>
-        // DOM Elements
-        // Eliminăm referințele la elementele de meniu care nu mai există
-        const container = document.getElementById('container');
-        
-        // Toggle Sidebar Function - eliminat deoarece meniul a fost eliminat
-        
-        // Event Listeners - eliminate deoarece meniul a fost eliminat
-        
-        // Submenu Toggle - eliminat deoarece meniul a fost eliminat
-        
-        // Sub-Submenu Toggle - eliminat deoarece meniul a fost eliminat
-        
-        // Toggle Content Boxes
         document.addEventListener('DOMContentLoaded', function() {
             // Selectează toate butoanele de expandare
             const toggleBtns = document.querySelectorAll('.toggle-btn');
@@ -616,9 +712,6 @@
                 // Adaugă ID la caseta de conținut
                 contentBox.id = contentId;
                 
-                // Setează display: none la început
-                contentBox.style.display = 'none';
-                
                 // Adaugă evenimentul de click
                 btn.addEventListener('click', function() {
                     const targetBox = document.getElementById(contentId);
@@ -633,63 +726,6 @@
                 });
             });
         });
-        
-        // Card Animation on Scroll
-        function checkElements() {
-            const contentSections = document.querySelectorAll('.content-section, .title-container, .content-box');
-            const triggerBottom = window.innerHeight * 0.8;
-            
-            contentSections.forEach(section => {
-                const sectionTop = section.getBoundingClientRect().top;
-                
-                if (sectionTop < triggerBottom) {
-                    section.style.opacity = '1';
-                    section.style.transform = 'translateY(0)';
-                }
-            });
-        }
-        
-        // Initialize Elements and check for mobile viewport
-        function initElements() {
-            const contentSections = document.querySelectorAll('.content-section, .title-container, .content-box');
-            
-            contentSections.forEach(section => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(20px)';
-                section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            });
-            
-            // Force reflow to apply initial styles before triggering animations
-            document.body.offsetHeight;
-            
-            // Immediate check for elements
-            checkElements();
-            
-            // Check if on mobile and adjust if needed
-            if (window.innerWidth <= 768) {
-                adjustForMobile();
-            }
-        }
-        
-        // Adjust for mobile specific issues
-        function adjustForMobile() {
-            const contentSections = document.querySelectorAll('.content-section, .title-container, .content-box');
-            
-            // Ensure sections are visible on mobile
-            contentSections.forEach(section => {
-                section.style.opacity = '1';
-                section.style.transform = 'translateY(0)';
-            });
-        }
-        
-        // Check elements on load and scroll
-        window.addEventListener('load', initElements);
-        window.addEventListener('resize', function() {
-            if (window.innerWidth <= 768) {
-                adjustForMobile();
-            }
-        });
-        window.addEventListener('scroll', checkElements);
     </script>
 </body>
 </html>
