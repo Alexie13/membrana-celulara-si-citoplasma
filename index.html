@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Membrana celulară și citoplasma - Biogenius Academy</title>
+    <style>
+        :root {
+            --primary-color: #00e6c0;
+            --secondary-color: #00b3a1;
+            --background-color: #021726;
+            --dark-color: #01111b;
+            --text-color: #ffffff;
+            --sidebar-width: 250px;
+            --header-height: 60px;
+            --card-background: rgba(0, 230, 192, 0.1);
+            --card-border: rgba(0, 230, 192, 0.3);
+            --orange-neon: #FF9500;
+            --orange-dark: #FF5E3A;
+            --yellow-neon: #FFD60A;
+            --yellow-dark: #FFC107;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            transition: margin-left 0.4s ease;
+        }
+
+        /* Header Styles */
+        header {
+            height: var(--header-height);
+            background-color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .menu-toggle {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            z-index: 20;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            background-color: var(--dark-color);
+            position: fixed;
+            top: 0;
+            left: -300px;
+            transition: left 0.4s ease;
+            z-index: 15;
+            padding-top: var(--header-height);
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
+            overflow-y: auto;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-menu {
+            padding: 20px 0;
+        }
+
+        .sidebar-menu ul {
+            list-style: none;
+        }
+
+        .sidebar-menu ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar-menu ul li a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .sidebar-menu ul li a:hover {
+            background-color: rgba(0, 230, 192, 0.1);
+            border-left: 4px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        /* Stiluri pentru submeniu */
+        .submenu {
+            display: none;
+            padding-left: 15px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .submenu li {
+            margin-bottom: 0 !important;
+        }
+        
+        .submenu li a {
+            padding: 8px 15px !important;
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .has-submenu.active .submenu {
+            display: block;
+        }
+        
+        .has-submenu .menu-toggle::after {
+            content: '▼';
+            font-size: 0.7em;
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .has-submenu.active .menu-toggle::after {
+            transform: rotate(180deg);
+        }
+        
+        /* Stiluri pentru sub-submeniu */
+        .sub-submenu {
+            display: none;
+            padding-left: 15px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .sub-submenu li {
+            margin-bottom: 0 !important;
+        }
+        
+        .sub-submenu li a {
+            padding: 6px 10px !important;
+            font-size: 0.85em;
+            opacity: 0.85;
+        }
+        
+        .has-sub-submenu.active .sub-submenu {
+            display: block;
+        }
+        
+        .has-sub-submenu .sub-menu-toggle::after {
+            content: '▼';
+            font-size: 0.7em;
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .has-sub-submenu.active .sub-menu-toggle::after {
+            transform: rotate(180deg);
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-top: var(--header-height);
+            padding: 20px;
+            transition: margin-left 0.4s ease;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        .page-title {
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
+            text-align: center;
+            color: var(--primary-color);
+            margin-top: 30px;
+            font-size: 2.2rem;
+        }
+
+        .page-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .content-section {
+            background-color: var(--card-background);
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+            padding: 30px;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .content-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .right-align {
+            padding-left: 25px;
+            display: block;
+        }
+
+        .titlu-2 {
+            padding-left: 10px;
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin: 30px 0 20px 0;
+        }
+
+        /* Toggle Content Styles */
+        .title-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 230, 192, 0.2);
+            padding: 10px 20px;
+            border-radius: 10px 10px 0 0;
+            border: 1px solid var(--card-border);
+            margin-top: 30px;
+        }
+
+        .title {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            text-align: center;
+            width: 100%;
+        }
+
+        .toggle-btn {
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .content-box {
+            border: 1px solid var(--card-border);
+            border-top: none;
+            padding: 20px;
+            border-radius: 0 0 10px 10px;
+            background-color: rgba(0, 230, 192, 0.05);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            background-color: rgba(0, 230, 192, 0.1);
+            border: 1px dashed var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            border-radius: 10px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .poza {
+            padding: 25px 0;
+            text-align: center;
+        }
+
+        .poza-2 {
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .home-button {
+            position: fixed;
+            top: 80px;
+            left: 20px;
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 9;
+            transition: all 0.3s ease;
+        }
+
+        .home-button:hover {
+            transform: scale(1.1);
+            background-color: var(--secondary-color);
+        }
+
+        .home-icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--dark-color);
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 14;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Brain Decoration */
+        .brain-decoration {
+            position: fixed;
+            bottom: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            opacity: 0.1;
+            z-index: -1;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300e6c0'%3E%3Cpath d='M12 2c1.9 0 3.6.8 4.8 2 1.2 1.2 2 2.9 2 4.8 0 3.2-2.2 5.8-5.2 6.6v.6c0 1.1-.9 2-2 2h-.4c-1.1 0-2-.9-2-2v-.6C6.2 14.6 4 12 4 8.8c0-1.9.8-3.6 2-4.8C7.4 2.8 9.1 2 11 2h1zm0 2c-1.3 0-2.5.5-3.4 1.4-.9.9-1.4 2.1-1.4 3.4 0 2.2 1.5 4.1 3.6 4.7.2.1.4.3.4.5v1c0 .6.4 1 1 1h.8c.6 0 1-.4 1-1v-1c0-.2.2-.4.4-.5 2.1-.6 3.6-2.5 3.6-4.7 0-1.3-.5-2.5-1.4-3.4-.9-.9-2.1-1.4-3.4-1.4h-1z'/%3E%3C/svg%3E");
+            background-size: cover;
+            background-repeat: no-repeat;
+            transform: rotate(45deg);
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            body, html {
+                overflow-x: hidden;
+                width: 100%;
+                position: relative;
+            }
+            
+            .container {
+                width: 100%;
+                overflow-x: hidden;
+            }
+            
+            .content-section {
+                padding: 20px 15px;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .home-button {
+                width: 40px;
+                height: 40px;
+                top: 70px;
+                left: 10px;
+            }
+            
+            .home-icon {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .titlu-2 {
+                font-size: 1.4rem;
+                padding-left: 5px;
+            }
+            
+            .right-align {
+                padding-left: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content-section {
+                padding: 15px 10px;
+            }
+
+            .logo h1 {
+                font-size: 0.9rem;
+            }
+            
+            .main-content {
+                padding: 15px 10px;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
+                margin-top: 20px;
+            }
+            
+            .right-align {
+                padding-left: 10px;
+            }
+            
+            .title-container {
+                padding: 8px 15px;
+            }
+            
+            .title {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="brain-decoration"></div>
+    
+    <!-- Header -->
+    <header>
+        <div style="width: 30px;"></div> <!-- Spațiu gol pentru echilibru -->
+        <div class="logo">
+            <svg width="40" height="40" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#00e6c0" stroke-width="2" />
+                <path d="M30,50 Q40,30 50,50 Q60,70 70,50" fill="none" stroke="#00e6c0" stroke-width="2" />
+                <path d="M30,40 Q50,20 70,40" fill="none" stroke="#00e6c0" stroke-width="2" />
+                <path d="M30,60 Q50,80 70,60" fill="none" stroke="#00e6c0" stroke-width="2" />
+                <path d="M45,35 Q50,30 55,35" fill="none" stroke="#00e6c0" stroke-width="2" />
+                <path d="M45,65 Q50,70 55,65" fill="none" stroke="#00e6c0" stroke-width="2" />
+            </svg>
+            <h1>BIOGENIUS ACADEMY</h1>
+        </div>
+        <div style="width: 30px;"></div> <!-- Spațiu gol pentru echilibru -->
+    </header>
+
+    <!-- Sidebar -->
+    <!-- Sidebar-ul a fost eliminat conform cererii -->
+
+    <!-- Overlay -->
+    <!-- Overlay-ul a fost eliminat conform cererii -->
+    
+    <!-- Back Button -->
+    <a href="http://127.0.0.1:5502/index.html#sectiunea_dorita" class="home-button">
+        <svg class="home-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+    </a>
+
+    <!-- Main Content -->
+    <div class="container" id="container">
+        <div class="main-content">
+            <h1 class="page-title">Membrana celulară și citoplasma</h1>
+            
+            <div class="content-section">
+                <h2 class="subtitlu">Introducere:</h2>
+                <p>
+                    <span class="right-align"><b>Membrana</span> celulară</b>, cunoscută și sub
+                    denumirea de membrană plasmatică, este o structură complexă și
+                    delicată, formată din două straturi de fosfolipide, aranjate într-un
+                    mod specific denumit „bicelular lipidic". Aceste lipide au capete
+                    hidrofile (care iubesc apa) orientate spre exterior și cozi hidrofobe
+                    (care resping apa) îndreptate spre interior. Între aceste straturi se
+                    găsesc proteine integrale și periferice, care îndeplinesc roluri
+                    esențiale, precum transportul activ și pasiv al moleculelor,
+                    semnalizarea celulară și recunoașterea intercelulară. Acest aranjament
+                    oferă membranei nu doar o barieră fizică, ci și capacitatea de a
+                    controla cu precizie ce substanțe pot intra sau ieși din celulă,
+                    precum nutrienți, ioni, și produse reziduale.
+                </p>
+                <p>
+                    <span class="right-align"><b>Citoplasma</span></b> unei celule eucariote este un mediu foarte organizat.
+                    Aceasta include:
+                </p>
+                <p><span class="right-align">• Citosolul</span> – un lichid vâscos, gelatinos, alcătuit în principal din apă, în care sunt dizolvate ioni precum potasiu și sodiu, proteine, și macromolecule necesare pentru funcționarea celulară.</p>
+                <p><span class="right-align">• Organite</span> specializate – cum ar fi mitocondriile, care produc energie, reticulul endoplasmatic, care sintetizează proteinele și lipidele, și complexul Golgi, responsabil de procesarea și transportul substanțelor.</p>
+                <p><span class="right-align">• Citoscheletul</span> – o rețea complexă de fibre proteice (microfilamente, microtubuli și filamente intermediare) care oferă sprijin structural, determină forma celulei și facilitează mișcarea organitelor și moleculelor în interiorul acesteia.</p>
+                
+                <div class="titlu-2"><b>Membrana Celulară:</b></div>
+                <p><span class="right-align"><b>Membrana</span> celulară</b>, prezentă atât la celulele procariote, cât și la cele eucariote, este un strat dublu de lipide care delimitează interiorul celulei de mediul extern. Această structură este formată în principal din fosfolipide, un tip de lipide specializate.</p>
+                <p><span class="right-align">Un</span> fosfolipid are o structură distinctă, compusă dintr-un cap fosfat, care este hidrofilic (atrage apa), și două cozi formate din acizi grași, care sunt hidrofobe (resping apa). Fosfolipidele se organizează spontan într-o structură bilamelară, în care cozile hidrofobe sunt orientate spre interior, departe de apă, iar capetele hidrofile sunt îndreptate spre exterior, spre mediile apoase. Această organizare, cunoscută sub denumirea de bistrat fosfolipidic, este stabilă din punct de vedere energetic și reprezintă baza structurii majorității membranelor biologice.</p>
+                
+                <h2 class="subtitlu">Modelul mozaicului fluid:</h2>
+                <p><span class="right-align">Modelul mozaicului fluid, propus pentru prima dată în 1972, este standardul actual pentru explicarea structurii și comportamentului membranei plasmatice. Acest model oferă o descriere accesibilă și precisă pentru organizarea și dinamica membranelor din diferite tipuri de celule.</span></p>
+                <p><span class="right-align">Conform acestui model, membrana plasmatică este alcătuită dintr-un „mozaic" de componente — fosfolipide, colesterol și proteine — care se mișcă liber într-un mediu fluid. Această organizare flexibilă permite componentele să își schimbe poziția în mod continuu, proces reflectat doar parțial de reprezentările grafice statice ale membranei. De fapt, fosfolipidele și proteinele glisează constant unele pe lângă celelalte, adaptându-se la necesitățile celulei.</span></p>
+                <p><span class="right-align">Un aspect fascinant al fluidității membranei este capacitatea acesteia de a se adapta la intruziuni. Dacă un ac foarte subțire pătrunde în membrană, aceasta își face loc în jurul acului, iar după ce este îndepărtat, structura membranei revine la forma inițială, fără deteriorări permanente sau modificări semnificative. Această flexibilitate și reziliență sunt caracteristici esențiale pentru funcționarea eficientă a celulelor.</span></p>
+                <p><span class="right-align">Membrana plasmatică este compusă din trei componente principale: <b>lipide</b> (fosfolipide și colesterol), <b>proteine</b> și <b>grupări de carbohidrați</b> atașate unor lipide sau proteine.</span></p>
+                <p><span class="right-align"><b>Fosfolipidele</b> sunt molecule alcătuite din glicerol, două cozi de acizi grași și o grupare fosfat. Acestea formează structura de bază a membranei prin organizarea în două straturi, cu cozile hidrofobe orientate spre interior și capetele hidrofile spre exterior.</span></p>
+                
+                <div class="title-container">
+                    <h2 class="title">Fosfolipide</h2>
+                    <button class="toggle-btn">+</button>
+                </div>
+                <div class="content-box">
+                    <p><span class="right-align"><b>Fosfolipidele</b></span>, aranjate într-un <b>bistrat</b>, formează materialul de bază al membranei plasmatice. Acestea sunt adaptate acestui rol, deoarece sunt <b>amfipatice</b>, adică au atât regiuni hidrofile, cât și regiuni hidrofobe.</p>
+                    
+                    <div class="poza">
+                        <div class="image-placeholder">Imagine Fosfolipide</div>
+                    </div>
+                    
+                    <p><span class="right-align"><b>Porțiunea hidrofilă</b>, adică „iubitoare de apă", a fosfolipidelor este reprezentată de capul acestora, care conține o grupare fosfat încărcată negativ și o grupare mică, denumită „R" (a cărei identitate poate varia), ce poate fi polară sau cu sarcină electrică. Acești capi hidrofili sunt orientați către <b>exteriorul bistratului fosfolipidic</b>, în contact direct cu mediul apos din interiorul și exteriorul celulei. Datorită naturii polare a apei, aceasta formează interacțiuni electrostatice eficiente cu capetele hidrofile ale fosfolipidelor.</span></p>
+                    
+                    <p><span class="right-align"><b>Partea hidrofobă</b>, sau „care evită apa", a fosfolipidelor este alcătuită din două cozi lungi de acizi grași nepolari. Aceste cozi interacționează bine cu moleculele nepolare, însă sunt incompatibile cu apa. Din acest motiv, fosfolipidele tind să își poziționeze cozile hidrofobe către <b>interiorul membranei</b>, departe de apă, creând o structură bilamelară stabilă din punct de vedere energetic. Această organizare formează o barieră eficientă între mediul intern și extern al celulei, împiedicând trecerea liberă a apei și a substanțelor polare sau cu sarcină electrică prin centrul hidrofob al membranei.</span></p>
+                    
+                    <p><span class="right-align">Fosfolipidele, datorită naturii lor amfipatice, nu doar că sunt ideale pentru formarea bistratului lipidic al membranei celulare, ci realizează acest proces spontan atunci când condițiile sunt favorabile. În prezența apei sau a soluțiilor lichide, aceste molecule se aranjează astfel încât cozile lor hidrofobe să fie orientate una spre cealaltă, în timp ce capetele hidrofile sunt îndreptate spre exterior, în contact cu mediul apos.</span></p>
+                    
+                    <p><span class="right-align">Dacă fosfolipidele au cozi mai scurte, ele pot forma MICELE – structuri sferice simple, cu un singur strat lipidic. În schimb, fosfolipidele cu cozi mai lungi se organizează în LIPOZOMI, structuri sferice mai complexe, care conțin un interior gol și sunt delimitate de un dublu strat lipidic. Aceste proprietăți unice le permit fosfolipidelor să creeze bariere eficiente și dinamice, esențiale pentru funcționarea celulelor.</span></p>
+                    
+                    <div class="poza-2">
+                        <div class="image-placeholder">Imagine Lipozom</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        // Eliminăm referințele la elementele de meniu care nu mai există
+        const container = document.getElementById('container');
+        
+        // Toggle Sidebar Function - eliminat deoarece meniul a fost eliminat
+        
+        // Event Listeners - eliminate deoarece meniul a fost eliminat
+        
+        // Submenu Toggle - eliminat deoarece meniul a fost eliminat
+        
+        // Sub-Submenu Toggle - eliminat deoarece meniul a fost eliminat
+        
+        // Toggle Content Boxes
+        document.addEventListener('DOMContentLoaded', function() {
+            // Selectează toate butoanele de expandare
+            const toggleBtns = document.querySelectorAll('.toggle-btn');
+            
+            // Adaugă un event listener pentru fiecare buton
+            toggleBtns.forEach(function(btn, index) {
+                // Dă fiecărui set de elemente un ID unic
+                const contentId = 'content-box-' + index;
+                
+                // Obține caseta de conținut corespunzătoare
+                const contentBox = btn.closest('.title-container').nextElementSibling;
+                
+                // Adaugă ID la caseta de conținut
+                contentBox.id = contentId;
+                
+                // Setează display: none la început
+                contentBox.style.display = 'none';
+                
+                // Adaugă evenimentul de click
+                btn.addEventListener('click', function() {
+                    const targetBox = document.getElementById(contentId);
+                    
+                    if (targetBox.style.display === 'none') {
+                        targetBox.style.display = 'block';
+                        btn.textContent = '−';
+                    } else {
+                        targetBox.style.display = 'none';
+                        btn.textContent = '+';
+                    }
+                });
+            });
+        });
+        
+        // Card Animation on Scroll
+        function checkElements() {
+            const contentSections = document.querySelectorAll('.content-section, .title-container, .content-box');
+            const triggerBottom = window.innerHeight * 0.8;
+            
+            contentSections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                
+                if (sectionTop < triggerBottom) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Initialize Elements and check for mobile viewport
+        function initElements() {
+            const contentSections = document.querySelectorAll('.content-section, .title-container, .content-box');
+            
+            contentSections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Force reflow to apply initial styles before triggering animations
+            document.body.offsetHeight;
+            
+            // Immediate check for elements
+            checkElements();
+            
+            // Check if on mobile and adjust if needed
+            if (window.innerWidth <= 768) {
+                adjustForMobile();
+            }
+        }
+        
+        // Adjust for mobile specific issues
+        function adjustForMobile() {
+            const contentSections = document.querySelectorAll('.content-section, .title-container, .content-box');
+            
+            // Ensure sections are visible on mobile
+            contentSections.forEach(section => {
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+            });
+        }
+        
+        // Check elements on load and scroll
+        window.addEventListener('load', initElements);
+        window.addEventListener('resize', function() {
+            if (window.innerWidth <= 768) {
+                adjustForMobile();
+            }
+        });
+        window.addEventListener('scroll', checkElements);
+    </script>
+</body>
+</html>
