@@ -192,19 +192,26 @@
         }
 
         .image-placeholder {
-            width: 100%;
-            max-width: 100%;
-            height: 100%;
-            background-color: rgba(0, 230, 192, 0.1);
-            border: 1px dashed var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px auto;
-            border-radius: 10px;
-            color: var(--primary-color);
-            font-weight: bold;
-        }
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%; /* Raport 16:9, poți ajusta în funcție de nevoie */
+    background-color: #ffffff; /* Fundal alb pentru container */
+    border: 2px dashed var(--primary-color);
+    margin: 20px 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.image-placeholder img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Păstrează imaginea completă fără tăieri */
+    background-color: #ffffff; /* Fundal alb pentru zonele neacoperite de imagine */
+    display: block;
+}
 
         .poza {
             padding: 25px 0;
